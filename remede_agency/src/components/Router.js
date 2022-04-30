@@ -5,6 +5,7 @@ import Header from './Header';
 import SignIn from '../pages/SignIn';
 import User from '../pages/User';
 import Error404 from '../pages/Error404';
+import Footer from './Footer';
 
 function Router() {
     return (
@@ -16,6 +17,7 @@ function Router() {
                 <Route path="/user" element={<User />} />
                 <Route path="*" element={<Error404 />} />
             </Routes>
+            <Footer />
         </BrowserRouter>
     )
 }

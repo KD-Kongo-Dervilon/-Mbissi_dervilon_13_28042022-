@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../assets/argentBankLogo.png';
-import user from '../assets/person-circle.svg';
+import user from '../assets/person-circle.svg'
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -10,8 +10,10 @@ const Header = () => {
                 <img className="main-nav-logo-image" src={logo} alt="logo" />
             </Link>
             <Link  to="/login" className="main-nav-item">
-                <img className="lf" src={user}  alt="image" />
+                <span  className="user">
+                    <i class="fa-solid fa-circle-user"></i>
                     Sign In
+                </span>
             </Link>
         </header>
     );
