@@ -4,7 +4,7 @@ import { statusSelector, tokenSelector, userInfosSelector } from '../selectors'
 
 const initialState = {
     status: 'void',
-    token: null,
+    // token: null,
     error: null,
     infos: {
         firstName: null,
