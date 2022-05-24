@@ -1,14 +1,19 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getUserProfile } from '../utils/slices/userIdSlice'
+import { useSelector, useDispatch } from 'react-redux';
+import { getUserProfile } from '../utils/slices/userIdSlices';
+import { tokenSelector } from '../utils/selectors';
 
 const User = () => {
   // TODO: check token in redux || localstorage
   // TODO: if not redux, getUserProfile with localstorage token
   // TODO: if !connected navigate ('/)
-  // const dispatch = useDispatch()
-  // const token = useSelector(state => state.user.token)
-  // useEffect(() => dispatch(getUserProfile(token)), [token])
+    const dispatch = useDispatch()
+    const token = useSelector(tokenSelector)
+    
+    useEffect(() => {
+        dispatch(getUserProfile(token))
+    }, [dispatch, token])
+
 
     return (
     <main class="main bg-dark">
@@ -38,7 +43,6 @@ const User = () => {
                 <p className="account-amount">$10,928.42</p>
                 <p className="account-amount-description">Available Balance</p>
             </div>
-            
             <div className="account-content-wrapper cta">
                 <button className="transaction-button">View transactions</button>
             </div>
@@ -50,7 +54,7 @@ const User = () => {
                 <p className="account-amount">$184.30</p>
                 <p className="account-amount-description">Current Balance</p>
             </div>
-
+            
             <div className="account-content-wrapper cta">
                 <button className="transaction-button">View transactions</button>
             </div>

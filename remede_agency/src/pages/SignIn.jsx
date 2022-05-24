@@ -13,7 +13,6 @@ const SignIn = () => {
 
     function signIn(e) {
         e.preventDefault()
-        console.log(`email / password : ${email} / ${password}`)
         dispatch(loginUser(email, password))
     }
 
