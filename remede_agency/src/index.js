@@ -3,9 +3,11 @@ import { createRoot } from 'react-dom/client';
 import Router from './components/Router';
 import store from './utils/store'
 import { Provider } from 'react-redux'
+import "./style/index.scss"
 
 
 
+// App router with Redux store Provider
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(

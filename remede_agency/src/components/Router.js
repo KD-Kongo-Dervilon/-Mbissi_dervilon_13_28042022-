@@ -7,7 +7,14 @@ import User from '../pages/User';
 import Error404 from '../pages/Error404';
 import Footer from './Footer';
 
+/**
+ * The Router function returns a BrowserRouter component that contains a Header, Routes, and a Footer
+ * component
+ * @returns A BrowserRouter component with a Header, Routes, and Footer component.
+ */
+
 function Router() {
+    
     return (
         <BrowserRouter>
             <Header />
