@@ -1,23 +1,44 @@
 import React from 'react';
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { loginUser } from "../utils/slices/userIdSlice"
+import { loginUser, setRememberMe } from "../utils/slices/userIdSlice"
+import { rememberMeSelector, statusSelector } from "../utils/selectors"
 
 const SignIn = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
     const dispatch = useDispatch()
-    const connected = useSelector(state => state.user.status === 'connected')
     const navigate = useNavigate()
 
-    function signIn(e) {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const connected = useSelector(state => statusSelector(state) === 'connected')
+    const rememberMe = useSelector(state => rememberMeSelector(state) === true)
+
+    useEffect(() => {
+        if (rememberMe &&
+            localStorage.ARGENTBANK_userInfos &&
+            localStorage.ARGENTBANK_userInfos.email !== null) {
+            setEmail(JSON.parse(localStorage.ARGENTBANK_userInfos).email)
+            document.querySelector('#remember-me').setAttribute('checked', true)
+        }
+        console.log('REMEMBER', rememberMe)
+    }, [rememberMe])
+
+    function logIn(e) {
         e.preventDefault()
-        dispatch(loginUser(email, password))
+        if (e.target[2].checked) {
+            dispatch(loginUser(email, password, true))
+        } else {
+            dispatch(loginUser(email, password))
+        }
+    }
+    
+    function toggleRememberMe() {
+        dispatch(setRememberMe(!rememberMe))
     }
 
     if (connected) {
-        // navigate('/user')
         setTimeout(() => navigate('/user'), 500)
     }
     
@@ -28,7 +49,7 @@ const SignIn = () => {
                 <i className="fa fa-user-circle sign-in-icon"></i>
                 <h1>Sign In</h1>
 
-                <form onSubmit={e => signIn(e)}>
+                <form onSubmit={e => logIn(e)}>
 
                     <div className="input-wrapper">
                     <label htmlFor="usermail">User Mail</label>
@@ -51,7 +72,7 @@ const SignIn = () => {
                     </div>
 
                     <div className="input-remember">
-                        <input type="checkbox" id="remember-me" />
+                    <input type="checkbox" id="remember-me" onClick={toggleRememberMe} />
                         <label htmlFor="remember-me">Remember me</label>
                     </div>
 

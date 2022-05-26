@@ -17,7 +17,7 @@ const Header = () => {
                 <img className="main-nav-logo-image" src={logo} alt="logo" />
             </Link>
             {connected ? (
-                <Link to='/' className='main-nav-item' onClick="initProfile">
+                <Link to='/' className='main-nav-item'>
                     <span  className="user">
                         <i class="fa-solid fa-circle-user">
                             {firstName}

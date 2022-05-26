@@ -1,20 +1,65 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { getUserProfile } from '../utils/slices/userIdSlices';
-import { userInfosSelector } from '../utils/selectors'
+import { getUserProfile, initProfile, updateUserProfile } from '../utils/slices/userIdSlices'
+import { statusSelector, userInfosSelector } from '../utils/selectors'
+import { useNavigate } from 'react-router-dom'
 
 const User = () => {
-  // TODO: check token in redux || localstorage
-  // TODO: if not redux, getUserProfile with localstorage token
-  // TODO: if !connected navigate ('/)
+    // TODO: check token in redux || localstorage
+    // TODO: check token in sessionstorage
+     // TODO: if !connected navigate ('/)
     const dispatch = useDispatch()
     
-    const token = sessionStorage.ARGENTBANK_Token
-    const { firstName } = useSelector(state => userInfosSelector(state))
+    const navigate = useNavigate()
+    const token = sessionStorage.ARGENTBANK_token
+    let { firstName, lastName, email, createdAt } = useSelector(state => userInfosSelector(state))
     
     useEffect(() => {
-        dispatch(getUserProfile(token))
-    }, [dispatch, token])
+        if (!token) {
+            dispatch(initProfile())
+            navigate('/login')
+        } else {
+            try {
+                dispatch(getUserProfile(token))
+            } catch (error) {
+                console.log('ERROR GETTING USER DATA -', error)
+                dispatch(initProfile())
+                navigate('/login')
+            }
+        }
+    }, [dispatch, navigate, token])
+
+    // function updateValue(target, value) {
+  //   const values = {
+  //     firstName: firstName,
+  //     lastName: lastName,
+  //     email: email
+  //   }
+  //   console.log('TARGET/VALUE -', target, value, values['firstName'], firstName)
+  //   values[target] = value
+  //   // firstName = value
+  //   console.log(firstName, lastName)
+  // }
+
+    function updateProfile(e) {
+        e.preventDefault()
+        const values = {
+            firstName: firstName,
+            lastName: lastName,
+            email: email
+        }
+        Object.values(e.target).forEach((obj, index) => {
+            if (obj.value === undefined) {
+                return
+        }
+        if (obj.value !== "") {
+            values[Object.keys(values)[index]] = Object.values(e.target)[index].value
+        }
+    })
+    console.log(values)
+    setTimeout(() => dispatch(updateUserProfile(token, values)), 500)
+    }
+
 
 
     return (
@@ -61,7 +106,36 @@ const User = () => {
                 <button className="transaction-button">View transactions</button>
             </div>
         </section>
-
+        <section className='profile'>
+            <div className="account-content-wrapper">
+                <h1>Your personnal informations:</h1>
+                <p>Account created at {createdAt}</p>
+                <form className='profile-form' onSubmit={e => updateProfile(e)}>
+                    <label htmlFor="firstName">Fist Name</label>
+                    <input
+                        type="text"
+                        id="firstName"
+                        placeholder={firstName}
+                        // onChange={e => updateValue('firstName', e.target.value)}
+                    />
+                    <label htmlFor="lastName">Last Name</label>
+                    <input
+                        type="text"
+                        id="lastName"
+                        placeholder={lastName}
+                        // onChange={e => updateValue('lastName', e.target.value)}
+                    />
+                    <label htmlFor="email">email</label>
+                    <input
+                        type="text"
+                        id="email"
+                        placeholder={email}
+                    // onChange={e => updateValue('email', e.target.value)}
+                    />
+                    <input className='profile-form-save-btn' type='submit' />
+                </form>
+            </div>
+        </section>
     </main>
     );
 };

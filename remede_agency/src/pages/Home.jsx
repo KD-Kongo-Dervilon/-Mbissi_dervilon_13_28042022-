@@ -1,9 +1,17 @@
 import React from 'react';
 import backgroundImage from '../assets/bank-tree.jpeg';
 import Feature from '../components/home/Feature';
+import {useEffect} from 'react'
+import {initProfile} from '../utils/slices/userIdSlice'
+import {useDispatch} from 'react-redux';
 
 
 const Home = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(initProfile())
+    })
+
     const features = [
         {
             type: "chat",
