@@ -1,16 +1,14 @@
-import React from 'react';
-import backgroundImage from '../assets/bank-tree.jpeg';
-import Feature from '../components/home/Feature';
+import backgroundImage from '../assets/bank-tree.jpeg'
+import Feature from '../components/home/Feature'
 import {useEffect} from 'react'
 import {initProfile} from '../utils/slices/userIdSlice'
-import {useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux'
 
 
 /**
  * It renders Homepage
  * @returns A function that returns a main element with a div and a section.
  */
-
 const Home = () => {
     const dispatch = useDispatch()
 
@@ -39,10 +37,8 @@ const Home = () => {
         }
     ]
 
-
     return (
         <main className='Home main'>
-        
             <div className="hero" style={{ backgroundImage: `url(${backgroundImage})` }}>
                 <section className="hero-content">
                     <h2 className="sr-only">Promoted Content</h2>
@@ -52,16 +48,16 @@ const Home = () => {
                     <p className="text">Open a savings account with Argent Bank today!</p>
                 </section>
             </div>
-
             <section className="features">
                 <h2 className="sr-only">Features</h2>
                 {features.map((feature, index) => (
                     <Feature value={feature} key={`feature-${index}`} />
+
                 ))}
+
             </section>
-
         </main>
-    );
-};
+    )
+}
 
-export default Home;
+export default Home

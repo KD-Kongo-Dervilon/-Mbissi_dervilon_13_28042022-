@@ -6,13 +6,11 @@ import { Provider } from 'react-redux'
 import "./style/index.scss"
 
 
-
 // App router with Redux store Provider
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(
     <Provider store={store}>
-        <Router tab="home" />
+            <Router tab="home" />
     </Provider>
 );
-
