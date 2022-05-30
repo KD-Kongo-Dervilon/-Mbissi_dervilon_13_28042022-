@@ -2,13 +2,21 @@
 
 Library
 
-React-redux        <npm i react-redux>
-Redux              <npm i redux>
-Axios              <npm i axios>
-React-router       <npm i react-router>
-React- router-dom  <npm i react-router-dom>
-Sass               <npm i sass>
-Prop-types         <npm i prop-types>
+<npm i react-redux>
+<npm i redux>
+<npm i axios>
+<npm i react-router>
+<npm i react-router-dom>
+<npm i sass>
+<npm i prop-types>
+
+[*React-redux*](https://react-redux.js.org/)
+[*Redux*](https://redux.js.org/)
+[*Axios*](https://axios-http.com/docs/intro)
+[*React-router*](https://reactrouter.com/)
+[*React-router-dom*](https://reactrouter.com/)
+[*Sass*](https://sass-lang.com/)
+[*Prop-types*](https://fr.reactjs.org/docs/typechecking-with-proptypes.html)
 
 ## Project's presentation
 
