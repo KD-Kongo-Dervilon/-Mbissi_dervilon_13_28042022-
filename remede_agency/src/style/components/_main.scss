@@ -125,11 +125,26 @@
     width: 300px;
     margin: 0 auto;
     margin-top: 3rem;
+    margin-bottom: 3rem;
     padding: 2rem;
 }
 
 .sign-in-icon {
     font-size: 5rem;
+}
+
+.user-out {
+    margin-left: 11px;
+}
+
+.user,
+.user-out {
+    margin-right: 1rem;
+    font-size: 1.3rem;
+}
+
+.marge-right  {
+    margin-right: 2rem;
 }
 
 .input-remember {

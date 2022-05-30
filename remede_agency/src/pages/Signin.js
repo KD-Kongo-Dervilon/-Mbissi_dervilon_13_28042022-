@@ -12,11 +12,14 @@ import { rememberMeSelector, statusSelector, userInfosSelector } from "../utils/
 const Signin = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [formValidator, setFormValidator] = useState(false)
+
   const emailError = useRef(null)
   const passwordError = useRef(null)
+
   const connected = useSelector(state => statusSelector(state) === 'connected')
   const rememberMe = useSelector(state => rememberMeSelector(state) === true)
   const userId = useSelector(state => userInfosSelector(state).id)
@@ -123,7 +126,7 @@ const Signin = () => {
           </div>
           <input className="sign-in-button" type="submit" value="Sign In" />
         </form>
-        <Link to="/signup">No account? Signup here...</Link>
+        <Link to="/signup"> <span className="marge-right">No account ?</span> Signup here</Link>
       </section>
     </main>
   )

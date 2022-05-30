@@ -1,3 +1,4 @@
+import React from 'react';
 import logo from '../assets/argentBankLogo.png'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -20,14 +21,17 @@ const Header = () => {
       </Link>
       {connected ? (
         <Link to='/' className='main-nav-item'>
-          
           {firstName}
-          
+          <span className='user-out'>
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </span>
           Sign Out
         </Link>
       ) : (
         <Link to="/signin" className='main-nav-item'>
-          
+          <span className='user'>
+          <i class="fa-solid fa-circle-user"></i>
+        </span>
           Sign In
         </Link>
       )}

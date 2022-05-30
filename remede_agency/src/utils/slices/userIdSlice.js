@@ -316,6 +316,8 @@ export function updateTransactionDetails(token, id, newData) {
  * @param {object} reducers - Actions creator
  * @returns Actions & a Reducer
  */
+
+
 const { actions, reducer } = createSlice({
     name: 'user',
     initialState,
