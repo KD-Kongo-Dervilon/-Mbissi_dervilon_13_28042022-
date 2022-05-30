@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# P13 - ArgentBank - Front-end application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Library
 
-## Available Scripts
+React-redux        <npm i react-redux>
+Redux              <npm i redux>
+Axios              <npm i axios>
+React-router       <npm i react-router>
+React- router-dom  <npm i react-router-dom>
+Sass               <npm i sass>
+Prop-types         <npm i prop-types>
 
-In the project directory, you can run:
+## Project's presentation
 
-### `npm start`
+The project is about a new start-up bank, Argent Bank, which is trying to break into the industry and needs help setting up its app. We obtained a two-part contract which is broken down into several phases:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Two phases are defined to initiate the project:
+* **Phase 1** 
+Phase 1: User Authentication - Creation of a web application allowing customers to log in and manage their accounts and profile.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Implement in a React application the static HTML/CSS templates provided, then set up user connections' security. It will also be necessary to retrieve basic user's informations via API.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **Phase 2** 
+Phase 2: Transactions - This would be to specify the API endpoints needed for a possible second mission once we have completed the first.
 
-### `npm run build`
+- Make API modeling proposals for the development of the project's second phase (visualization of the month's transactions, details on each transaction, and capability to modify these details). [*Swagger*](https://swagger.io/) is designed to create a .yaml file in order to proceed.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+&nbsp;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+*Two repositories are needed to enable the project to run:*
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. BACK-END API
 
-### `npm run eject`
+Backend Link
+<https://github.com/KD-Kongo-Dervilon/P13-Bank-API>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Be noticed this codebase is required in order to use all the functionalities of the front-end application. Make sure not to use the original provided codebase as it is deprecated...
+Please refer to the Readme.md documentation provided for installation and use.
+### URL/PORT
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The default URL used by the micro-API is <http://localhost:3001>.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. FRONT-END
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The present repository contains this part of the project. Any package manager such as npm or yarn is required.
 
-## Learn More
+Frontend link
+<https://github.com/KD-Kongo-Dervilon/Mbissi_dervilon_13_28042022>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Then access inside your local repository and install dependencies using :
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm install
 
-### Code Splitting
+* Launch the application with :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+ npm start
 
-### Analyzing the Bundle Size
+### Use the application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+You can make use of the credentials below to access the application.
+It is also possible to create a new user
 
-### Making a Progressive Web App
+Tony Stark
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    Email: tony@stark.com
+    Password: password123
 
-### Advanced Configuration
+Steve Rogers
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    Email: steve@rogers.com,
+    Password: password456

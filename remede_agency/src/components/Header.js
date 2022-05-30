@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { userInfosSelector } from '../utils/selectors'
 
-
-
 /**
  * It returns a header with a logo, a link to the home page, and a link to the signin page if the user
  * is not connected, and a link to the home page and a link to sign out if the user is connected
  * @returns A header with a logo and a link to the signin page.
  */
+
 const Header = () => {
   const connected = useSelector(state => state.user.status === 'connected')
   const { firstName } = useSelector(state => userInfosSelector(state))
