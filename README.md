@@ -1,22 +1,22 @@
 # P13 - ArgentBank - Front-end application
 
-Library
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)
 
-<npm i react-redux>
-<npm i redux>
-<npm i axios>
-<npm i react-router>
-<npm i react-router-dom>
-<npm i sass>
-<npm i prop-types>
+### Prerequisites
+- [NodeJS](https://nodejs.org/en/)  Version 16.13.0 
+- [Visual Studio Code](https://code.visualstudio.com/) or another IDE of your choice
+- [MongoDB Community Server](https://www.mongodb.com/try/download/community)
+- [NPM](https://www.npmjs.com/) 
 
-[*React-redux*](https://react-redux.js.org/)
-[*Redux*](https://redux.js.org/)
-[*Axios*](https://axios-http.com/docs/intro)
-[*React-router*](https://reactrouter.com/)
-[*React-router-dom*](https://reactrouter.com/)
-[*Sass*](https://sass-lang.com/)
-[*Prop-types*](https://fr.reactjs.org/docs/typechecking-with-proptypes.html)
+### Dependencies
+- [React](https://reactjs.org/) Version 17.0.2
+- [React-router-dom](https://v5.reactrouter.com/web/guides/quick-start) Version 5.3.0
+- [react-redux](https://react-redux.js.org/) Version 7.2.6
+- [redux](https://redux.js.org/) Version 4.1.2
+- [Sass](https://sass-lang.com/) Version 1.51.0
+- [axios](https://axios-http.com/docs/intro) Version 0.24.0
+- [Prop-types](https://fr.reactjs.org/docs/typechecking-with-proptypes.html) Version 15.8.1
+
 
 ## Project's presentation
 
