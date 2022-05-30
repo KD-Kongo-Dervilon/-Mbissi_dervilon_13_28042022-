@@ -51,6 +51,7 @@ const User = () => {
    * @param e - the event object
    * @callback updateUserProfile - Dispatch new profile
    */
+  
   function updateProfile(e) {
     e.preventDefault()
     closeProfileForm()
@@ -88,7 +89,7 @@ const User = () => {
   return (
     <main className="main bg-dark">
       <div className="header">
-        <h1>Welcome back<br />{firstName}</h1>
+        <h1>Welcome back<br />{firstName} {lastName}</h1>
         <button className="edit-button" onClick={showProfileForm}>Edit Name</button>
       </div>
       <h2 className="sr-only">Accounts</h2>

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid black;
+    border: 1px solid #E0E6ED;
     background-color: #fff;
     width: 80%;
     margin: 0 auto;
@@ -11,6 +11,7 @@
     box-sizing: border-box;
     text-align: left;
     margin-bottom: 2rem;
+    box-shadow: 2px 2px 5px #000;
 }
 
 .account-amount {
@@ -36,8 +37,8 @@
 }
 
 .edit-button {
-    border-color: #00bc77;
-    background-color: #00bc77;
+    border-color: #00BC77;
+    background-color: #00BC77;
     color: #fff;
     font-weight: bold;
     padding: 10px;
@@ -55,8 +56,8 @@
     font-size: 1.1rem;
     font-weight: bold;
     margin-top: 1rem;
-    border-color: #00bc77;
-    background-color: #00bc77;
+    border-color: #00BC77;
+    background-color: #00BC77;
     color: #fff;
 }
 
@@ -95,17 +96,17 @@
     flex: 1;
     justify-content: center;
     align-items: center;
-    background-color: #00bc77;
+    background-color: #E0E6ED;
     padding: 30px;
-    color: white;
+    color: #000;
     opacity: 0;
     transition: .5s ease-out;
-    border-bottom: 3px solid #007248;
+    border-bottom: 3px solid #fff;
     box-shadow: 0 10px 5px rgba(0,0,0,.4);
 
     h1 {
         font-size: 2rem;
-        color: #00432b;
+        color: #000;
         margin-bottom: 0;
     }
 
@@ -125,21 +126,23 @@
     .profile-form-save-btn,
     .profile-form-close-btn {
         display: block;
-        // width: 100%;
+        //width: 100%;
         padding: 8px;
         font-size: 1.1rem;
         font-weight: bold;
         margin-top: 1rem;
-        border-color: white;
+        border-color: #6458F5;
         background-color: white;
-        color: #00bc77;
+        color: #6458F5;
         cursor: pointer;
-    }
+        border-radius: 5px;
+}
 
     .profile-form-close-btn {
         position: absolute;
         top: 0;
         right: 0;
         margin-right: 1.7rem;
+        border-radius: 5px;
     }
 }

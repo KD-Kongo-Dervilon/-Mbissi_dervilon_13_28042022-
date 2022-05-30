@@ -3,7 +3,6 @@ import axios from 'axios'
 import { rememberMeSelector, statusSelector } from '../selectors'
 
 
-
 // User initial state
 const initialState = {
     status: 'void',
@@ -32,13 +31,14 @@ const initialState = {
  * @param {boolean} value - The value to be set.
  * @returns A function that takes a dispatch function as an argument.
  */
+
+
 export function setRememberMe(value) {
     return (dispatch) => {
         dispatch(remember(value))
         localStorage.setItem('ARGENTBANK_rememberMe', value)
     }
 }
-
 
 /* --------------- PROFILE ---------------- */
 
@@ -47,6 +47,8 @@ export function setRememberMe(value) {
  * Initiate state on logout, but keeps rememberMe state
  * @returns A thunk.
  */
+
+
 export function initProfile() {
     return async (dispatch, getState) => {
         const status = statusSelector(getState())
@@ -58,6 +60,7 @@ export function initProfile() {
     }
 }
 
+
 /**
  * Manage LOGIN user
  * It returns a thunk that dispatches a fetching action, then makes an API call, then dispatches a
@@ -67,6 +70,7 @@ export function initProfile() {
  * @param {boolean} rememberMe
  * @returns A thunk
  */
+
 export function signinUser(email, password, rememberMe) {
     return async (dispatch, getState) => {
         if (!rememberMe) {
@@ -96,6 +100,8 @@ export function signinUser(email, password, rememberMe) {
  * @param {string} password - Password
  * @returns A thunk
  */
+
+
 export function createUser(fName, lName, email, password) {
     return async (dispatch, getState) => {
         const status = statusSelector(getState())
@@ -127,6 +133,8 @@ export function createUser(fName, lName, email, password) {
  * @param {string} token - The token to access the API
  * @returns A thunk
  */
+
+
 export function getUserProfile(token) {
     return async (dispatch, getState) => {
         const userInfosStorage = localStorage.getItem('ARGENTBANK_userInfos')
@@ -166,6 +174,7 @@ export function getUserProfile(token) {
  * @param {object} values - LastName & FirstName to be updated on database
  * @returns A thunk
  */
+
 export function updateUserProfile(token, values) {
     return async (dispatch, getState) => {
         const rememberMe = rememberMeSelector(getState())
@@ -204,6 +213,8 @@ export function updateUserProfile(token, values) {
  * @param {string} token - The token to access the API
  * @returns A thunk
  */
+
+
 export function getUserTransactions(token) {
     // console.log('FETCHING TRANSACTIONS')
     return async (dispatch) => {
@@ -232,6 +243,7 @@ export function getUserTransactions(token) {
  * @param {string} id - The transaction ID
  * @returns A thunk
  */
+
 export function getTransactionDetails(token, id) {
     // console.log(`FETCHING TRANSACTION n°${id}`)
     return async (dispatch) => {
@@ -260,6 +272,8 @@ export function getTransactionDetails(token, id) {
  * @param {string} id - The transaction ID
  * @returns A thunk
  */
+
+
 export function deleteTransactionDetails(token, id) {
     // console.log(`UPDATING TRANSACTION n°${id}`)
     return async (dispatch) => {
@@ -288,6 +302,7 @@ export function deleteTransactionDetails(token, id) {
  * @param {object} newData - The full details data to change
  * @returns A thunk
  */
+
 export function updateTransactionDetails(token, id, newData) {
     // console.log(`UPDATING TRANSACTION n°${id}`)
     return async (dispatch) => {

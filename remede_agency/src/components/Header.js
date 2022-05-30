@@ -21,6 +21,9 @@ const Header = () => {
       </Link>
       {connected ? (
         <Link to='/' className='main-nav-item'>
+        <span className='circle-user'>
+          <i class="fa fa-user-circle"></i>
+        </span>
           {firstName}
           <span className='user-out'>
             <i class="fa-solid fa-right-from-bracket"></i>

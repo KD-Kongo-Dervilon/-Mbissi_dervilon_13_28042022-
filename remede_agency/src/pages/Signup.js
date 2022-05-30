@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom'
  * Component that displays the registration form
  * @returns A React component
  */
+
+
 const Signup = () => {
     const dispatch = useDispatch()
     const [fName, setFname] = useState()
@@ -32,6 +34,8 @@ const Signup = () => {
      * @param e - the event object
      * @returns the dispatch function createUser & navigate to '/signin' page
      */
+
+
     function register(e) {
         e.preventDefault()
         if (!formValidator) {
@@ -49,6 +53,7 @@ const Signup = () => {
      * @param {string} value - The value of the input field
      * @returns the value of the formValidator.
      */
+    
     function validateForm(type, value) {
         const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
         switch (type) {

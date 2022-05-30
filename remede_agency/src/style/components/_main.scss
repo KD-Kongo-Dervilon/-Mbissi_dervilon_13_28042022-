@@ -4,7 +4,7 @@
 }
 
 .bg-dark {
-    background-color: #12002b;
+    background-color: #12002B;
 }
 
 .sr-only {
@@ -35,7 +35,7 @@
 .hero-content {
     position: relative;
     top: 2rem;
-    width: 200px;
+    width: 250px;
     background: white;
     padding: 2rem;
     text-align: left;
@@ -88,7 +88,7 @@
 }
 
 .feature-icon {
-    width: 100px;
+    width: 150px;
     border: 10px solid #00bc77;
     border-radius: 50%;
     padding: 1rem;
@@ -130,7 +130,7 @@
 }
 
 .sign-in-icon {
-    font-size: 5rem;
+    font-size: 4rem;
 }
 
 .user-out {
@@ -139,8 +139,12 @@
 
 .user,
 .user-out {
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     font-size: 1.3rem;
+}
+
+.left {
+    margin-right: 0.5rem;
 }
 
 .marge-right  {

@@ -57,6 +57,9 @@ const Transactions = () => {
         <main className="main bg-dark">
             <div className="header transactions-header">
                 <div className='back'>
+                <span className="left">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </span>
                     <Link to={`/user/${userId}`}> Back </Link>
                 </div>
                 <h3>Argent Bank Checking (x8349)</h3>
