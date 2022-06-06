@@ -20,6 +20,7 @@ function Router() {
     <BrowserRouter>
       <Header />
       <Routes>
+        <Route exact path="/Mbissi_dervilon_13_28042022" element={<Home />} />
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
