@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/Mbissi_dervilon_13_28042022/static/css/main.520f60d9.css",
+    "main.js": "/Mbissi_dervilon_13_28042022/static/js/main.a05bf61f.js",
+    "static/media/broken-piggy.png": "/Mbissi_dervilon_13_28042022/static/media/broken-piggy.d65e83122fffb0176961.png",
+    "static/media/bank-tree.jpeg": "/Mbissi_dervilon_13_28042022/static/media/bank-tree.4d59987c7c62b024b014.jpeg",
+    "static/media/icon-security.png": "/Mbissi_dervilon_13_28042022/static/media/icon-security.1c819fa1007a5c53e6a9.png",
+    "static/media/argentBankLogo.png": "/Mbissi_dervilon_13_28042022/static/media/argentBankLogo.e031a16c76ab9bbbf78a.png",
+    "static/media/icon-chat.png": "/Mbissi_dervilon_13_28042022/static/media/icon-chat.e238539d82b5a5f63c33.png",
+    "static/media/icon-money.png": "/Mbissi_dervilon_13_28042022/static/media/icon-money.8ec88bb1a5070fd6513a.png",
+    "index.html": "/Mbissi_dervilon_13_28042022/index.html",
+    "main.520f60d9.css.map": "/Mbissi_dervilon_13_28042022/static/css/main.520f60d9.css.map",
+    "main.a05bf61f.js.map": "/Mbissi_dervilon_13_28042022/static/js/main.a05bf61f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.520f60d9.css",
+    "static/js/main.a05bf61f.js"
+  ]
+}
