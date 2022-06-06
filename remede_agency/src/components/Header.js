@@ -22,18 +22,18 @@ const Header = () => {
       {connected ? (
         <Link to='/' className='main-nav-item'>
         <span className='circle-user'>
-          <i class="fa fa-user-circle"></i>
+          <i className="fa fa-user-circle"></i>
         </span>
           {firstName}
           <span className='user-out'>
-            <i class="fa-solid fa-right-from-bracket"></i>
+            <i className="fa-solid fa-right-from-bracket"></i>
           </span>
           Sign Out
         </Link>
       ) : (
         <Link to="/signin" className='main-nav-item'>
           <span className='user'>
-          <i class="fa-solid fa-circle-user"></i>
+          <i className="fa-solid fa-circle-user"></i>
         </span>
           Sign In
         </Link>

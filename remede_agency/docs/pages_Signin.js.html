@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/Signin.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/Signin.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useEffect, useState, useRef } from "react"
+import { useNavigate, Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { signinUser, setRememberMe, getUserProfile } from "../utils/slices/userIdSlice"
+import { rememberMeSelector, statusSelector, userInfosSelector } from "../utils/selectors"
+
+
+/**
+ * It's a component that renders a form to sign in a user
+ * @returns A React component
+ */
+const Signin = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [formValidator, setFormValidator] = useState(false)
+
+  const emailError = useRef(null)
+  const passwordError = useRef(null)
+
+  const connected = useSelector(state => statusSelector(state) === 'connected')
+  const rememberMe = useSelector(state => rememberMeSelector(state) === true)
+  const userId = useSelector(state => userInfosSelector(state).id)
+
+  // Auto-displays user email on demand
+  useEffect(() => {
+    if (rememberMe &amp;&amp;
+      localStorage.ARGENTBANK_userInfos &amp;&amp;
+      localStorage.ARGENTBANK_userInfos.email !== null) {
+      setEmail(JSON.parse(localStorage.ARGENTBANK_userInfos).email)
+      document.querySelector('#remember-me').setAttribute('checked', true)
+    }
+  }, [rememberMe])
+
+  // Fetch USERPROFILE if access granted
+  useEffect(() => {
+    if (connected) {
+      const token = sessionStorage.ARGENTBANK_token
+      dispatch(getUserProfile(token))
+    }
+  }, [connected])
+
+  // Navigate to USER PAGE with ID if profile fetched
+  useEffect(() => {
+    if (connected) {
+      navigate(`/user/${userId}`)
+    }
+  }, [userId])
+
+  // Dispatch user's credentials to gain access to user's Page
+  function logIn(e) {
+    e.preventDefault()
+    if (!formValidator) {
+      return
+    }
+    // Third arg for remeberMe
+    if (e.target[2].checked) {
+      dispatch(signinUser(email, password, true))
+    } else {
+      dispatch(signinUser(email, password))
+    }
+  }
+
+  // Validate each input and sets value for email &amp; password
+  function validateForm(type, value) {
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+    switch (type) {
+      case 'email':
+        setEmail(value)
+        if (!emailRegex.test(value)) {
+          emailError.current.className = 'error-msg error-show'
+          setFormValidator(false)
+          return
+        } else {
+          emailError.current.className = 'error-msg'
+        }
+        break
+      default:
+        setPassword(value)
+        if (value.length &lt; 6) {
+          passwordError.current.className = 'error-msg error-show'
+          setFormValidator(false)
+          return
+        } else {
+          passwordError.current.className = 'error-msg'
+        }
+        break
+    }
+    setFormValidator(true)
+  }
+
+  function toggleRememberMe() {
+    dispatch(setRememberMe(!rememberMe))
+  }
+
+  return (
+    &lt;main className="main bg-dark">
+      &lt;section className="sign-in-content">
+        &lt;i className="fa fa-user-circle sign-in-icon">&lt;/i>
+        &lt;h1>Sign In&lt;/h1>
+        &lt;form onSubmit={e => logIn(e)}>
+          &lt;div className="input-wrapper">
+            &lt;label htmlFor="usermail">User Mail&lt;/label>
+            &lt;input
+              type="text"
+              id="usermail"
+              onChange={e => validateForm('email', e.target.value)}
+              value={email}
+            />
+            &lt;div className="error-msg" ref={emailError}>This is not a correct email&lt;/div>
+          &lt;/div>
+          &lt;div className="input-wrapper">
+            &lt;label htmlFor="userpassword">Password&lt;/label>
+            &lt;input
+              type="password"
+              id="userpassword"
+              onChange={e => validateForm('password', e.target.value)}
+            />
+            &lt;div className="error-msg" ref={passwordError}>Password should be at least 6 characters long&lt;/div>
+          &lt;/div>
+          &lt;div className="input-remember">
+            &lt;input type="checkbox" id="remember-me" onClick={toggleRememberMe} />
+            &lt;label htmlFor="remember-me">Remember me&lt;/label>
+          &lt;/div>
+          &lt;input className="sign-in-button" type="submit" value="Sign In" />
+        &lt;/form>
+        &lt;Link to="/signup"> &lt;span className="marge-right">No account ?&lt;/span> Signup here&lt;/Link>
+      &lt;/section>
+    &lt;/main>
+  )
+}
+
+export default Signin</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#deleteTransactionDetails">deleteTransactionDetails</a></li><li><a href="global.html#Feature">Feature</a></li><li><a href="global.html#getTransactionDetails">getTransactionDetails</a></li><li><a href="global.html#getUserProfile">getUserProfile</a></li><li><a href="global.html#getUserTransactions">getUserTransactions</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#initProfile">initProfile</a></li><li><a href="global.html#Router">Router</a></li><li><a href="global.html#setRememberMe">setRememberMe</a></li><li><a href="global.html#Signin">Signin</a></li><li><a href="global.html#signinUser">signinUser</a></li><li><a href="global.html#Signup">Signup</a></li><li><a href="global.html#Transaction">Transaction</a></li><li><a href="global.html#updateTransactionDetails">updateTransactionDetails</a></li><li><a href="global.html#User">User</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Jun 06 2022 15:49:52 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

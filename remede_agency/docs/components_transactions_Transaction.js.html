@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/transactions/Transaction.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/transactions/Transaction.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useEffect, useRef, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { transactionDetailSelector } from "../../utils/selectors"
+import { getTransactionDetails, deleteTransactionDetails, updateTransactionDetails } from "../../utils/slices/userIdSlice"
+import PropTypes from 'prop-types';
+
+/**
+ * It takes in value props,in order to produce Transaction ticket component
+ * @param {object} data - Values to build the transaction ticket
+ * @param {string} token - token to access the API
+ * @param {number} index - Index number of the ticket
+ * @returns A React component.
+ */
+const Transaction = ({ data, token, index }) => {
+    const dispatch = useDispatch()
+    const { id, date, description, amount, balance } = data
+    const { type, category, notes } = useSelector(state => transactionDetailSelector(state, index))
+    const [newType, setType] = useState(type)
+    const [newCategory, setCategory] = useState(category)
+    const [newNotes, setNotes] = useState(notes)
+    const [edit, setEdit] = useState(false)
+    const details = useRef(null)
+
+    // Get values from Store
+    useEffect(() => {
+        setType(type)
+        setCategory(category)
+        setNotes(notes)
+    }, [type, category, notes])
+
+    // Display details by accessing API and add 'show' className
+    function displayDetails() {
+        dispatch(getTransactionDetails(token, id))
+        setEdit(true)
+        details.current.className = 'transaction details show'
+    }
+
+    // Hide details
+    function hideDetails() {
+        // console.log('NEW VALUES FOR DETAILS -', newType, newCategory, newNotes);
+        dispatch(updateTransactionDetails(token, id, { newType, newCategory, newNotes }))
+        setEdit(false)
+        details.current.className = 'transaction details'
+    }
+
+    // Change type from select box
+    function changeType(e) {
+        setType(e.target.value)
+    }
+
+    function deleteDetails() {
+        dispatch(deleteTransactionDetails(token, id))
+        setEdit(false)
+        details.current.className = 'transaction details'
+    }
+
+    return (
+        &lt;section className="account">
+            &lt;div className="account-content-wrapper">
+                &lt;h3 className="transaction account-title">{description} ({id})&lt;/h3>
+                &lt;div className='amounts'>
+                    &lt;div className='amount'>
+                        &lt;p className="transaction account-amount">${amount}&lt;/p>
+                        &lt;p className="transaction account-amount-description">Amount&lt;/p>
+                    &lt;/div>
+                    &lt;div className='balance'>
+                        &lt;p className="transaction account-amount">${balance}&lt;/p>
+                        &lt;p className="transaction account-amount-description">Available Balance&lt;/p>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+            &lt;div className='transaction details' ref={details}>
+                &lt;div>&lt;span>Type&lt;/span>
+                    &lt;form className="details-input">
+                        &lt;select className="type" value={newType || ''} onChange={e => changeType(e)}>
+                            &lt;option value='-'>-&lt;/option>
+                            &lt;option value='Electronic'>Electronic&lt;/option>
+                            &lt;option value='Services'>Services&lt;/option>
+                            &lt;option value='Representation'>Representation&lt;/option>
+                            &lt;option value='Furnitures'>Furnitures&lt;/option>
+                            &lt;option value='Other'>Other&lt;/option>
+                        &lt;/select>
+                    &lt;/form>
+                &lt;/div>
+                &lt;div>&lt;span>Category&lt;/span>
+                    &lt;input
+                        className="details-input category"
+                        type="text"
+                        value={newCategory || ''}
+                        onChange={e => setCategory(e.target.value)} />
+                &lt;/div>
+                &lt;div>&lt;span>Notes&lt;/span>
+                    &lt;textarea
+                        className="details-input notes"
+                        rows='2'
+                        value={newNotes || ''}
+                        onChange={e => setNotes(e.target.value)} />
+                &lt;/div>
+            &lt;/div>
+            &lt;div className="transaction account-content-wrapper cta">
+                &lt;p className="transaction account-amount-description">{date}&lt;/p>
+                {edit ?
+                    (&lt;div>
+                        &lt;button className="transaction-button save" onClick={hideDetails}>Save Details&lt;/button>
+                        &lt;button className="transaction-button" onClick={deleteDetails}>Delete Details&lt;/button>
+                    &lt;/div>)
+                    :
+                    &lt;button className="transaction-button" onClick={displayDetails}>View Details&lt;/button>
+                }
+            &lt;/div>
+        &lt;/section>
+    )
+}
+
+export default Transaction
+
+Transaction.propTypes = {
+    data: PropTypes.objectOf(
+        PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number,
+            PropTypes.array,
+            PropTypes.object
+        ])
+    ),
+    token: PropTypes.string,
+    index: PropTypes.number,
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#deleteTransactionDetails">deleteTransactionDetails</a></li><li><a href="global.html#Feature">Feature</a></li><li><a href="global.html#getTransactionDetails">getTransactionDetails</a></li><li><a href="global.html#getUserProfile">getUserProfile</a></li><li><a href="global.html#getUserTransactions">getUserTransactions</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#initProfile">initProfile</a></li><li><a href="global.html#Router">Router</a></li><li><a href="global.html#setRememberMe">setRememberMe</a></li><li><a href="global.html#Signin">Signin</a></li><li><a href="global.html#signinUser">signinUser</a></li><li><a href="global.html#Signup">Signup</a></li><li><a href="global.html#Transaction">Transaction</a></li><li><a href="global.html#updateTransactionDetails">updateTransactionDetails</a></li><li><a href="global.html#User">User</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Jun 06 2022 15:49:52 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
